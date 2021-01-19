@@ -1,0 +1,19 @@
+{% for result in g.results %}
+    <div>
+        <h1>{{ result.title }}</h1>
+        <h4>{{ result.original_title }}</h4>
+
+        <img src="https://image.tmdb.org/t/p/w92{{result.poster_path}}" alt="mando" />
+
+
+        <h4>Backdrops</h4>
+        {% for backdrop in result.images.backdrops %}
+            {{ backdrop.width }} x {{ backdrop.height }}
+            <img src="https://image.tmdb.org/t/p/w300{{backdrop.file_path}}" alt="mando" />
+        {% endfor %}
+
+        <pre>
+{{ result | tojson }}
+        </pre>
+    </div>
+{% endfor %}
